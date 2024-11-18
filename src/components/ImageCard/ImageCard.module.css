@@ -1,0 +1,6 @@
+.imageCard {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}

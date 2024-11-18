@@ -1,0 +1,13 @@
+.loadMoreBtn {
+  padding: 0.5em 1em;
+  background-color: #4f1bd3;
+  color: white;
+}
+
+.loadMoreBtn:hover,
+.loadMoreBtn:focus,
+.loadMoreBtn:active {
+  border: none;
+  outline: none;
+  background-color: #6b3be3;
+}

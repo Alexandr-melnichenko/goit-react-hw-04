@@ -1,0 +1,15 @@
+.galleryList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.liItem {
+  max-width: 300px;
+  max-height: 200px;
+}
