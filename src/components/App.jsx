@@ -19,18 +19,16 @@ function App() {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isBtnMore, setIsBtnMore] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
-  // const [isImageOpen, setIsImageOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   useEffect(() => {
     if (query === '') return;
-    // console.log(React.version);
     async function fetchImages() {
       setIsLoading(true);
       try {
@@ -42,8 +40,8 @@ function App() {
             ? response.data.results
             : [...prevImages, ...response.data.results]
         );
-        setIsBtnMore(response.data.results.length > 0);
-        // setImageUrl(response.data.results.urls.regular);
+
+        setTotalPages(response.data.total_pages);
       } catch (error) {
         console.error('Error fetching images:', error);
       } finally {
@@ -87,10 +85,15 @@ function App() {
       ) : (
         <ImageGallery images={images} handleImageClick={handleImageClick} />
       )}
-      {/* {setQuery !== '' && (
-        <ImageGallery images={images} handleImageClick={handleImageClick} />
-      )} */}
-      {isBtnMore && <LoadMoreBtn moreBtnClick={handleMoreBtnClick} />}
+
+      {pageNumber < totalPages && (
+        <LoadMoreBtn moreBtnClick={handleMoreBtnClick} />
+      )}
+
+      {pageNumber === totalPages && images.length !== 0 && (
+        <p>We are sorry, but you have reached the end of search results.</p>
+      )}
+
       <Toaster />
       {isOpen && (
         <ImageModal

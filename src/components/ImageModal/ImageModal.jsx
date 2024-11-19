@@ -11,14 +11,8 @@ const ImageModal = ({ onRequestClose, isOpen, imageUrl }) => {
         overlayClassName={s.overlay}
       >
         <div className={s.imageWrapper}>
-          <img
-            src={imageUrl}
-            alt="Large view"
-            // style={{ width: '100%', objectFit: 'cover' }}
-            className={s.modalImage}
-          />
+          <img src={imageUrl} alt="Large view" className={s.modalImage} />
         </div>
-        {/* <button onClick={onRequestClose}>Close</button> */}
       </ReactModal>
     </div>
   );
